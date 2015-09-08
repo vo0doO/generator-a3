@@ -20,7 +20,7 @@ var AngularFullstackGenerator = yeoman.generators.Base.extend({
       type: String,
       required: 'false'
     });
-    this.scriptAppName = this.appname + genUtils.appName(this);
+    this.scriptAppName = this.appname; // + genUtils.appName(this);
     this.appPath = this.env.options.appPath;
     this.pkg = require('../package.json');
 
