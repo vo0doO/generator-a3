@@ -222,40 +222,6 @@ module.exports = function (grunt) {
       }
     },
 
-    // Debugging with node inspector
-    'node-inspector': {
-      custom: {
-        options: {
-          'web-host': 'localhost'
-        }
-      }
-    },
-
-    // Use nodemon to run server in debug mode with an initial breakpoint
-    nodemon: {
-      debug: {
-        script: 'server/app.js',
-        options: {
-          nodeArgs: ['--debug-brk'],
-          env: {
-            PORT: process.env.PORT || 9000
-          },
-          callback: function (nodemon) {
-            nodemon.on('log', function (event) {
-              console.log(event.colour);
-            });
-
-            // opens browser on initial server start
-            nodemon.on('config:update', function () {
-              setTimeout(function () {
-                require('open')('http://localhost:8080/debug?port=5858');
-              }, 500);
-            });
-          }
-        }
-      }
-    },
-
     // The actual grunt server settings
     connect: {
       options: {
@@ -265,9 +231,7 @@ module.exports = function (grunt) {
         livereload: 35729,
         onCreateServer: function(server, connect, options) {
           var io = require('socket.io').listen(server);
-          console.log('====> socket.io - server : ', server);
           io.sockets.on('connection', function(socket) {
-            console.log('====> socket.io - connection : ', socket);
           });
         }
       },
@@ -430,13 +394,6 @@ module.exports = function (grunt) {
         cwd: '.tmp',
         src: ['{app,components}/**/*.html'],
         dest: '.tmp/tmp-templates.js'
-      }
-    },
-
-    // Replace Google CDN references
-    cdnify: {
-      dist: {
-        html: ['<%%= yeoman.dist %>/public/*.html']
       }
     },
 
@@ -887,7 +844,6 @@ module.exports = function (grunt) {
     'concat',
     'ngAnnotate',
     'copy:dist',
-    'cdnify',
     'cssmin',
     'uglify',
     'rev',
