@@ -82,21 +82,21 @@ var AngularFullstackGenerator = yeoman.generators.Base.extend({
       }, {
         type: "list",
         name: "markup",
-        default: 1,
+        default: 0,
         message: "What would you like to write markup with?",
         choices: [ "HTML", "Jade"],
         filter: function( val ) { return val.toLowerCase(); }
       }, {
         type: "list",
         name: "stylesheet",
-        default: 1,
+        default: 0,
         message: "What would you like to write stylesheets with?",
         choices: [ "CSS", "Less", "Sass", "Stylus"],
         filter: function( val ) { return val.toLowerCase(); }
       },  {
         type: "list",
         name: "router",
-        default: 1,
+        default: 0,
         message: "What Angular router would you like to use?",
         choices: ["uiRouter", "ngRoute"],
         filter: function( val ) { return val.toLowerCase(); }
