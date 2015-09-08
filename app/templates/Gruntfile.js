@@ -404,7 +404,7 @@ module.exports = function (grunt) {
           expand: true,
           dot: true,
           cwd: '<%%= yeoman.client %>',
-          dest: '<%%= yeoman.dist %>/public',
+          dest: '<%%= yeoman.dist %>',
           src: [
             '*.{ico,png,txt}',
             '.htaccess',
@@ -631,8 +631,6 @@ module.exports = function (grunt) {
         files: {
           '<%%= yeoman.client %>/index.html': [
               ['{.tmp,<%%= yeoman.client %>}/{sdk,portal,plugins}/**/*.js',
-               '!{.tmp,<%%= yeoman.client %>}/portal/app.js',
-               '!{.tmp,<%%= yeoman.client %>}/sdk/sdk.js',
                '!{.tmp,<%%= yeoman.client %>}/{sdk,portal,plugins}/**/*.spec.js',
                '!{.tmp,<%%= yeoman.client %>}/{sdk,portal,plugins}/**/*.mock.js']
             ]
