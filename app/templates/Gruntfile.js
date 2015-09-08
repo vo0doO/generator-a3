@@ -632,7 +632,7 @@ module.exports = function (grunt) {
           '<%%= yeoman.client %>/index.html': [
               ['{.tmp,<%%= yeoman.client %>}/{sdk,portal,plugins}/**/*.js',
                '!{.tmp,<%%= yeoman.client %>}/portal/app.js',
-               '!{.tmp,<%%= yeoman.client %>}/sdk/base/base.js',
+               '!{.tmp,<%%= yeoman.client %>}/sdk/sdk.js',
                '!{.tmp,<%%= yeoman.client %>}/{sdk,portal,plugins}/**/*.spec.js',
                '!{.tmp,<%%= yeoman.client %>}/{sdk,portal,plugins}/**/*.mock.js']
             ]

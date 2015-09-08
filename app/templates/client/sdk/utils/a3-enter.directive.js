@@ -1,10 +1,10 @@
-(function() {  
-  
+(function() {
+
   'use strict';
 
   angular
     .module('a3.base')
-    .directive('bgEnter', bgEnter);
+    .directive('a3Enter', bgEnter);
 
   /* @ngInject */
   function bgEnter() {

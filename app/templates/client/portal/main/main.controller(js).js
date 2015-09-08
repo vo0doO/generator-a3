@@ -1,14 +1,18 @@
+(function() {
 'use strict';
 
-angular.module('<%= scriptAppName %>')
-  .controller('MainCtrl', function ($scope, $http<% if(filters.socketio) { %>, socket<% } %>) {
+  angular
+    .module('<%= scriptAppName %>')
+    .controller('MainCtrl', MainCtrl);
+
+  function MainCtrl($scope, $http<% if(filters.socketio) { %>, socket<% } %>) {
     $scope.awesomeThings = [];
 
     $http.get('/api/things').success(function(awesomeThings) {
       $scope.awesomeThings = awesomeThings;<% if(filters.socketio) { %>
       socket.syncUpdates('thing', $scope.awesomeThings);<% } %>
     });
-<% if(filters.mongoose) { %>
+  <% if(filters.mongoose) { %>
     $scope.addThing = function() {
       if($scope.newThing === '') {
         return;
@@ -24,4 +28,6 @@ angular.module('<%= scriptAppName %>')
     $scope.$on('$destroy', function () {
       socket.unsyncUpdates('thing');
     });<% } %>
-  });
+  }
+
+})();

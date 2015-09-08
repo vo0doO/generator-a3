@@ -4,7 +4,7 @@
 
   angular
     .module('a3.base')
-    .directive('bgBlink', bgBlink);
+    .directive('a3Blink', bgBlink);
 
   /* @ngInject */
   function bgBlink($timeout) {

@@ -1,10 +1,10 @@
-(function() {  
-  
+(function() {
+
   'use strict';
 
   angular
     .module('a3.base')
-    .directive('bgFocus', bgFocus);
+    .directive('a3Focus', bgFocus);
 
   /* @ngInject */
   function bgFocus() {
@@ -16,5 +16,5 @@
       });
     };
   }
-  
+
 })();

@@ -1,7 +1,9 @@
-'use strict';
+(function() {
+  'use strict';
 
-angular.module('<%= scriptAppName %>')
-  <% if(filters.ngroute) { %>.config(function ($routeProvider) {
+  angular
+    .module('<%= scriptAppName %>')
+    <% if(filters.ngroute) { %>.config(function ($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'app/main/main.html',
@@ -15,3 +17,5 @@ angular.module('<%= scriptAppName %>')
         controller: 'MainCtrl'
       });
   });<% } %>
+
+})();

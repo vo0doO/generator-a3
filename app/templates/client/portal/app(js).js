@@ -1,10 +1,11 @@
 (function() {
-'use strict';
+  'use strict';
 
-angular.module('<%= scriptAppName %>', [<%= angularModules %>])
-  <% if(filters.ngroute) { %>.config(config)<% } %><% if(filters.uirouter) { %>.config(config)<% } %><% if(filters.auth) { %>
-  .factory('authInterceptor', authInterceptor)
-  .run(run)<% } %>;
+  angular
+    .module('<%= scriptAppName %>', [<%= angularModules %>])
+    <% if(filters.ngroute) { %>.config(config)<% } %><% if(filters.uirouter) { %>.config(config)<% } %><% if(filters.auth) { %>
+    .factory('authInterceptor', authInterceptor)
+    .run(run)<% } %>;
 
   /* @ngInject */
   <% if(filters.ngroute) { %>function config($routeProvider, $locationProvider<% if(filters.auth) { %>, $httpProvider<% } %>) {
