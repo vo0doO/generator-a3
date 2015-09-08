@@ -193,7 +193,7 @@
 #### Breaking Changes
  * New project structure
  * Deprecated value and constant sub generators 
- * Sub-generators generate components in a single directory and don't inject themselves into the index file (this is done by a grunt task now)
+ * Sub-generators generate sdk in a single directory and don't inject themselves into the index file (this is done by a grunt task now)
 
 <a name="v1.4.3"></a>
 ### v1.4.3 (2014-05-25)

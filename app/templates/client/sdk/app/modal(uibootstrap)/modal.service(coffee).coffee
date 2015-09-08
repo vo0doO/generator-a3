@@ -15,7 +15,7 @@ angular.module '<%= scriptAppName %>'
     modalClass = modalClass or 'modal-default'
     angular.extend modalScope, scope
     $modal.open
-      templateUrl: 'components/modal/modal.html'
+      templateUrl: 'sdk/modal/modal.html'
       windowClass: modalClass
       scope: modalScope
 

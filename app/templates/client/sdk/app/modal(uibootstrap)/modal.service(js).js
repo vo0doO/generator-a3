@@ -16,7 +16,7 @@ angular.module('<%= scriptAppName %>')
       angular.extend(modalScope, scope);
 
       return $modal.open({
-        templateUrl: 'components/modal/modal.html',
+        templateUrl: 'sdk/modal/modal.html',
         windowClass: modalClass,
         scope: modalScope
       });

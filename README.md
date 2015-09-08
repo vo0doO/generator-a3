@@ -43,7 +43,7 @@ Run `grunt` for building, `grunt serve` for preview, and `grunt serve:dist` for 
 
 ## Injection
 
-A grunt task looks for new files in your `client/app` and `client/components` folder and automatically injects them in the appropriate places based on an injection block.
+A grunt task looks for new files in your `client/app` and `client/sdk` folder and automatically injects them in the appropriate places based on an injection block.
 
 * `less` files into `client/app.less`
 * `scss` files into `client/app.scss`
@@ -208,7 +208,7 @@ Produces
     client/app/serviceName/serviceName.decorator.js
 
 
-## Bower Components
+## Bower sdk
 
 The following packages are always installed by the [app](#app) generator:
 
@@ -264,16 +264,16 @@ Keeping your app secrets and other sensitive information in source control isn't
 Overview
 
     ├── client
-    │   ├── app                 - All of our app specific components go in here
+    │   ├── app                 - All of our app specific sdk go in here
     │   ├── assets              - Custom assets: fonts, images, etc…
-    │   ├── components          - Our reusable components, non-specific to to our app
+    │   ├── sdk          - Our reusable sdk, non-specific to to our app
     │
     ├── e2e                     - Our protractor end to end tests
     │
     └── server
         ├── api                 - Our apps server api
         ├── auth                - For handling authentication with different auth strategies
-        ├── components          - Our reusable or app-wide components
+        ├── sdk          - Our reusable or app-wide sdk
         ├── config              - Where we do the bulk of our apps configuration
         │   └── local.env.js    - Keep our environment variables out of source control
         │   └── environment     - Configuration specific to the node environment

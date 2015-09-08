@@ -26,12 +26,12 @@ module.exports = function(config) {
       'client/app/app.coffee',
       'client/app/**/*.js',
       'client/app/**/*.coffee',
-      'client/components/**/*.js',
-      'client/components/**/*.coffee',
+      'client/sdk/**/*.js',
+      'client/sdk/**/*.coffee',
       'client/app/**/*.jade',
-      'client/components/**/*.jade',
+      'client/sdk/**/*.jade',
       'client/app/**/*.html',
-      'client/components/**/*.html'
+      'client/sdk/**/*.html'
     ],
 
     preprocessors: {
