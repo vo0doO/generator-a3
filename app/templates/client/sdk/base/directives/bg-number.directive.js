@@ -3,7 +3,7 @@
   'use strict';
 
   angular
-    .module('baseFramework')
+    .module('a3.base')
     .directive('bgNumberOnly', bgNumberOnly);
 
   function bgNumberOnly(){

@@ -2,7 +2,7 @@
 
 'use strict'
 
-angular.module 'baseFramework'
+angular.module 'a3.base'
 .factory 'socket', (socketFactory) ->
 
   # socket.io now auto-configures its connection when we omit a connection url

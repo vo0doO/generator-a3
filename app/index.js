@@ -240,7 +240,7 @@ var AngularFullstackGenerator = yeoman.generators.Base.extend({
     });
 
     var angModules = [
-      "'baseFramework'",
+      "'a3.base'",
       "'ngCookies'",
       "'ngResource'",
       "'ngSanitize'"

@@ -6,7 +6,7 @@
    * Removes server error when user updates input
    */
   angular
-    .module('baseFramework')
+    .module('a3.base')
     .directive('mongooseError', mongooseError);
 
   /* @ngInject */
