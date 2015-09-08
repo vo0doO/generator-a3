@@ -12,7 +12,8 @@ var AngularFullstackGenerator = yeoman.generators.Base.extend({
   init: function () {
     this.argument('name', { type: String, required: false });
     this.appname = this.name || path.basename(process.cwd());
-    this.appname = this._.camelize(this._.slugify(this._.humanize(this.appname)));
+    // this.appname = this._.camelize(this._.slugify(this._.humanize(this.appname)));
+    this.appname = this._.camelize(this.appname);
 
     this.option('app-suffix', {
       desc: 'Allow a custom suffix to be added to the module name',
@@ -81,6 +82,7 @@ var AngularFullstackGenerator = yeoman.generators.Base.extend({
       }, {
         type: "list",
         name: "markup",
+        default: 1,
         message: "What would you like to write markup with?",
         choices: [ "HTML", "Jade"],
         filter: function( val ) { return val.toLowerCase(); }
@@ -89,14 +91,14 @@ var AngularFullstackGenerator = yeoman.generators.Base.extend({
         name: "stylesheet",
         default: 1,
         message: "What would you like to write stylesheets with?",
-        choices: [ "CSS", "Sass", "Stylus", "Less"],
+        choices: [ "CSS", "Less", "Sass", "Stylus"],
         filter: function( val ) { return val.toLowerCase(); }
       },  {
         type: "list",
         name: "router",
         default: 1,
         message: "What Angular router would you like to use?",
-        choices: [ "ngRoute", "uiRouter"],
+        choices: ["uiRouter", "ngRoute"],
         filter: function( val ) { return val.toLowerCase(); }
       }, {
         type: "confirm",
@@ -205,7 +207,7 @@ var AngularFullstackGenerator = yeoman.generators.Base.extend({
 
   compose: function() {
     if(this.skipConfig) return;
-    var appPath = 'client/app/';
+    var appPath = 'client/portal/';
     var extensions = [];
     var filters = [];
 
@@ -222,6 +224,9 @@ var AngularFullstackGenerator = yeoman.generators.Base.extend({
 
     this.composeWith('a3-component', {
       options: {
+        'moduleChartDirectory': 'modules/charts/',
+        'moduleWidgetDirectory': 'modules/widgets/',
+        'moduleTaskerDirectory': 'modules/taskers/',
         'routeDirectory': appPath,
         'directiveDirectory': appPath,
         'filterDirectory': appPath,
