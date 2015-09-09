@@ -224,9 +224,9 @@ var AngularFullstackGenerator = yeoman.generators.Base.extend({
 
     this.composeWith('a3-component', {
       options: {
-        'moduleChartDirectory': 'modules/charts/',
-        'moduleWidgetDirectory': 'modules/widgets/',
-        'moduleTaskerDirectory': 'modules/taskers/',
+        'moduleChartDirectory': 'client/sdk/charts/',
+        'moduleWidgetDirectory': 'client/plugins/widgets/',
+        'moduleTaskerDirectory': 'client/plugins/taskers/',
         'routeDirectory': appPath,
         'directiveDirectory': appPath,
         'filterDirectory': appPath,
@@ -245,7 +245,9 @@ var AngularFullstackGenerator = yeoman.generators.Base.extend({
     });
 
     var angModules = [
-      "'a3.base'",
+      "'a3.sdk'",
+      "'a3.widgets'",
+      "'a3.taskers'",
       "'ngCookies'",
       "'ngResource'",
       "'ngSanitize'"

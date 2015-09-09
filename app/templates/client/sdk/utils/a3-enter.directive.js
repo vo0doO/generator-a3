@@ -3,7 +3,7 @@
   'use strict';
 
   angular
-    .module('a3.base')
+    .module('a3.sdk')
     .directive('a3Enter', bgEnter);
 
   /* @ngInject */
