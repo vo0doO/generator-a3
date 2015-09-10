@@ -7,7 +7,7 @@
   'use strict';
 
   angular
-    .module('a3.sdk')
+    .module('a3.sdk.utils')
     .factory('uuid', function() {
       var svc = {
         new: function() {
@@ -25,5 +25,5 @@
 
       return svc;
     });
-    
+
 })();
