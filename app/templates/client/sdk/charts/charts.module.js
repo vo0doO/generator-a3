@@ -1,6 +1,9 @@
 (function () {
-	'use strict';
+    'use strict';
 
-	angular.module('a3.sdk.charts', ['a3.sdk.utils']);
+    angular.module('a3.sdk.charts', [
+        'a3.sdk.utils'
+        // add chart modules
+    ]);
 
 })();
