@@ -1,24 +1,23 @@
-(function() {
+(function () {
+    'use strict';
 
-  'use strict';
+    angular
+        .module('a3.sdk.utils')
+        .directive('a3Enter', bgEnter);
 
-  angular
-    .module('a3.sdk')
-    .directive('a3Enter', bgEnter);
+    /* @ngInject */
+    function bgEnter() {
+        return function (scope, element, attrs) {
+            element.bind("keydown keypress", function (event) {
+                if (event.which === 13) {
+                    scope.$apply(function () {
+                        scope.$eval(attrs.ngEnter);
+                    });
 
-  /* @ngInject */
-  function bgEnter() {
-    return function (scope, element, attrs) {
-      element.bind("keydown keypress", function (event) {
-        if(event.which === 13) {
-          scope.$apply(function (){
-              scope.$eval(attrs.ngEnter);
-          });
-
-          event.preventDefault();
-        }
-      });
-    };
-  }
+                    event.preventDefault();
+                }
+            });
+        };
+    }
 
 })();
