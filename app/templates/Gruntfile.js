@@ -383,7 +383,7 @@ module.exports = function (grunt) {
           removeScriptTypeAttributes: true,
           removeStyleLinkTypeAttributes: true
         },
-        usemin: 'portal/app.js'
+        usemin: 'app/app.js'
       },
       main: {
         cwd: '<%%= yeoman.client %>',
