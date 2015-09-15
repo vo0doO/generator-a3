@@ -6,12 +6,11 @@
         .run(run);
 
     function run(countReducer, reduxUtil) {
-        var stateReducer = Redux.combineReducers(
-            {
-                counter: countReducer
-            }
-        );
+        // Developer must add reducers.
+        var actionHandlers = {
+            counter: countHandler
+        };
 
-        reduxUtil.createStore(stateReducer);
+        reduxUtil.registerActionHandler(actionHandlers);
     }
 })(window.Redux);

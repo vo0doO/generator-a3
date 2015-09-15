@@ -1,4 +1,4 @@
-(function() {
+(function(Redux) {
     'use strict';
 
     angular
@@ -7,14 +7,19 @@
 
     /* @ngInject */
     function reduxUtil($ngRedux, $injector) {
-        this.connect = connect;
-        this.createStore = createStore;
+        this.mappingActionToScope = mappingActionToScope;
+        this.registerActionHandler = registerActionHandler;
 
-        function connect(mapStateScope, action, that) {
+        function mappingActionToScope(mapStateScope, action, that) {
             return $ngRedux.util($injector).connect(mapStateScope, action)(that);
         }
 
-        function createStore(reducers) {
+        function registerActionHandler(actionHandlers) {
+            var reducers = Redux.combineReducers(actionHandlers);
+            _createStore(reducers);
+        }
+
+        function _createStore(reducers) {
             $ngRedux.createStoreWith(
                 reducers,
                 [_thunkMiddleware],
@@ -22,7 +27,6 @@
             );
         }
 
-        // Converstion Middleware for Redux
         function _thunkMiddleware(_ref) {
             var dispatch = _ref.dispatch;
             var getState = _ref.getState;
@@ -35,4 +39,4 @@
         }
     }
 
-})();
+})(window.Redux);

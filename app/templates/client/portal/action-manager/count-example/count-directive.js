@@ -26,7 +26,7 @@
         /* @ngInject */
         function controller($scope, countAction, reduxUtil) {
 
-            var unsubscribe = reduxUtil.connect(mapStateScope, countAction, this);
+            var unsubscribe = reduxUtil.mappingActionToScope(mapStateScope, countAction, this);
             $scope.$on('destroy', unsubscribe);
 
             function mapStateScope(state) {
