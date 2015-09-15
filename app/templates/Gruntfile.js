@@ -58,6 +58,13 @@ module.exports = function (grunt) {
           '<%%= yeoman.client %>/{sdk,portal,plugins}/**/*.js',
           '!<%%= yeoman.client %>/{sdk,portal,plugins}/**/*.spec.js',
           '!<%%= yeoman.client %>/{sdk,portal,plugins}/**/*.mock.js',
+          '!<%%= yeoman.client %>/sdk/charts/charts.module.js',
+          '!<%%= yeoman.client %>/sdk/config/config.module.js',
+          '!<%%= yeoman.client %>/sdk/model/model.module.js',
+          '!<%%= yeoman.client %>/sdk/redux/redux.js',
+          '!<%%= yeoman.client %>/sdk/redux/a3-redux.module.js',
+          '!<%%= yeoman.client %>/sdk/utils/utils.module.js',
+          '!<%%= yeoman.client %>/sdk/sdk.module.js',
           '!<%%= yeoman.client %>/portal/app.js'],
         tasks: ['injector:scripts']
       },
@@ -633,7 +640,15 @@ module.exports = function (grunt) {
           '<%%= yeoman.client %>/index.html': [
               ['{.tmp,<%%= yeoman.client %>}/{sdk,portal,plugins}/**/*.js',
                '!{.tmp,<%%= yeoman.client %>}/{sdk,portal,plugins}/**/*.spec.js',
-               '!{.tmp,<%%= yeoman.client %>}/{sdk,portal,plugins}/**/*.mock.js']
+               '!{.tmp,<%%= yeoman.client %>}/{sdk,portal,plugins}/**/*.mock.js',
+               '!<%%= yeoman.client %>/sdk/charts/charts.module.js',
+               '!<%%= yeoman.client %>/sdk/config/config.module.js',
+               '!<%%= yeoman.client %>/sdk/model/model.module.js',
+               '!<%%= yeoman.client %>/sdk/redux/redux.js',
+               '!<%%= yeoman.client %>/sdk/redux/a3-redux.module.js',
+               '!<%%= yeoman.client %>/sdk/utils/utils.module.js',
+               '!<%%= yeoman.client %>/sdk/sdk.module.js',
+               '!<%%= yeoman.client %>/portal/app.js']
             ]
         }
       },<% if(filters.stylus) { %>

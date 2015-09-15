@@ -26,14 +26,22 @@
     <% if(filters.ngroute) { %><div ng-view=""></div><% } %><% if(filters.uirouter) { %><div ui-view=""></div><% } %>
 
     <!-- build:js({client,node_modules}) app/vendor.js -->
-      <!-- bower:js -->
-      <!-- endbower --><% if(filters.socketio) { %>
-      <script src="socket.io-client/socket.io.js"></script><% } %>
+    <!-- bower:js -->
+    <!-- endbower --><% if(filters.socketio) { %>
+    <script src="socket.io-client/socket.io.js"></script><% } %>
     <!-- endbuild -->
 
     <!-- build:js({.tmp,client}) app/app.js -->
-      <!-- injector:js -->
-      <!-- endinjector -->
+    <script src="sdk/charts/charts.module.js"></script>
+    <script src="sdk/config/config.module.js"></script>
+    <script src="sdk/model/model.module.js"></script>
+    <script src="sdk/redux/redux.js"></script>
+    <script src="sdk/redux/a3-redux.module.js"></script>
+    <script src="sdk/utils/utils.module.js"></script>
+    <script src="sdk/sdk.module.js"></script>
+
+    <!-- injector:js -->
+    <!-- endinjector -->
     <!-- endbuild -->
 </body>
 </html>
