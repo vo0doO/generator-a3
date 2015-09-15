@@ -185,7 +185,9 @@ return /******/ (function(modules) { // webpackBootstrap
        *
        * @param {Object} action A plain object representing “what changed”. It is
        * a good idea to keep actions serializable so you can record and replay user
-       * sessions, or use the time travelling `redux-devtools`.
+       * sessions, or use the time travelling `redux-devtools`. An action must have
+       * a `type` property which may not be `undefined`. It is a good idea to use
+       * string constants for action types.
        *
        * @returns {Object} For convenience, the same action object you dispatched.
        *
@@ -194,7 +196,11 @@ return /******/ (function(modules) { // webpackBootstrap
        */
       function dispatch(action) {
         if (!_utilsIsPlainObject2['default'](action)) {
-          throw new Error('Actions must be plain objects. Use custom middleware for async actions.');
+          throw new Error('Actions must be plain objects. ' + 'Use custom middleware for async actions.');
+        }
+
+        if (typeof action.type === 'undefined') {
+          throw new Error('Actions may not have an undefined "type" property. ' + 'Have you misspelled a constant?');
         }
 
         if (isDispatching) {
@@ -446,9 +452,9 @@ return /******/ (function(modules) { // webpackBootstrap
         return bindActionCreator(actionCreators, dispatch);
       }
 
-      if (typeof actionCreators !== 'object' || actionCreators == null) {
+      if (typeof actionCreators !== 'object' || actionCreators === null || actionCreators === undefined) {
         // eslint-disable-line no-eq-null
-        throw new Error('bindActionCreators expected an object or a function, instead received ' + typeof actionCreators + '. ' + 'Did you write "import ActionCreators from" instead of "import * as ActionCreators from"?');
+        throw new Error('bindActionCreators expected an object or a function, instead received ' + (actionCreators === null ? 'null' : typeof actionCreators) + '. ' + 'Did you write "import ActionCreators from" instead of "import * as ActionCreators from"?');
       }
 
       return _utilsMapValues2['default'](actionCreators, function (actionCreator) {
@@ -492,25 +498,26 @@ return /******/ (function(modules) { // webpackBootstrap
       return 'Reducer "' + key + '" returned undefined handling ' + actionName + '. ' + 'To ignore an action, you must explicitly return the previous state.';
     }
 
-    function verifyStateShape(initialState, currentState) {
-      var reducerKeys = Object.keys(currentState);
+    function verifyStateShape(inputState, outputState, action) {
+      var reducerKeys = Object.keys(outputState);
+      var argumentName = action && action.type === _createStore.ActionTypes.INIT ? 'initialState argument passed to createStore' : 'previous state received by the reducer';
 
       if (reducerKeys.length === 0) {
         console.error('Store does not have a valid reducer. Make sure the argument passed ' + 'to combineReducers is an object whose values are reducers.');
         return;
       }
 
-      if (!_utilsIsPlainObject2['default'](initialState)) {
-        console.error('initialState has unexpected type of "' + ({}).toString.call(initialState).match(/\s([a-z|A-Z]+)/)[1] + '". Expected initialState to be an object with the following ' + ('keys: "' + reducerKeys.join('", "') + '"'));
+      if (!_utilsIsPlainObject2['default'](inputState)) {
+        console.error('The ' + argumentName + ' has unexpected type of "' + ({}).toString.call(inputState).match(/\s([a-z|A-Z]+)/)[1] + '". Expected argument to be an object with the following ' + ('keys: "' + reducerKeys.join('", "') + '"'));
         return;
       }
 
-      var unexpectedKeys = Object.keys(initialState).filter(function (key) {
+      var unexpectedKeys = Object.keys(inputState).filter(function (key) {
         return reducerKeys.indexOf(key) < 0;
       });
 
       if (unexpectedKeys.length > 0) {
-        console.error('Unexpected ' + (unexpectedKeys.length > 1 ? 'keys' : 'key') + ' ' + ('"' + unexpectedKeys.join('", "') + '" in initialState will be ignored. ') + ('Expected to find one of the known reducer keys instead: "' + reducerKeys.join('", "') + '"'));
+        console.error('Unexpected ' + (unexpectedKeys.length > 1 ? 'keys' : 'key') + ' ' + ('"' + unexpectedKeys.join('", "') + '" found in ' + argumentName + '. ') + 'Expected to find one of the known reducer keys instead: ' + ('"' + reducerKeys.join('", "') + '". Unexpected keys will be ignored.'));
       }
     }
 
@@ -551,7 +558,6 @@ return /******/ (function(modules) { // webpackBootstrap
       var defaultState = _utilsMapValues2['default'](finalReducers, function () {
         return undefined;
       });
-      var stateShapeVerified;
 
       return function combination(state, action) {
         if (state === undefined) state = defaultState;
@@ -565,10 +571,7 @@ return /******/ (function(modules) { // webpackBootstrap
         });
 
         if (true) {
-          if (!stateShapeVerified) {
-            verifyStateShape(state, finalState);
-            stateShapeVerified = true;
-          }
+          verifyStateShape(state, finalState, action);
         }
 
         return finalState;
