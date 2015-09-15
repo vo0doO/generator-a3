@@ -3,9 +3,9 @@
 
   angular.module('a3.sdk', [
       // angular base
-      "'ngCookies'",
-      "'ngResource'",
-      "'ngSanitize'",
+      'ngCookies',
+      'ngResource',
+      'ngSanitize',
       // custom
       'a3.sdk.charts',
       'a3.sdk.utils',

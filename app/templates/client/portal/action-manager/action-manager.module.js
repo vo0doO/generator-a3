@@ -5,7 +5,7 @@
         .module('<%= scriptAppName %>.action-manager', [])
         .run(run);
 
-    function run(countReducer, reduxUtil) {
+    function run(countHandler, reduxUtil) {
         // Developer must add reducers.
         var actionHandlers = {
             counter: countHandler

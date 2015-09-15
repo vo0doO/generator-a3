@@ -255,7 +255,7 @@ var AngularFullstackGenerator = yeoman.generators.Base.extend({
     if(this.filters.uirouter) angModules.push("'ui.router'");
     if(this.filters.uibootstrap) angModules.push("'ui.bootstrap'");
 
-    this.angularModules = "\n    " + angModules.join(",\n    ") +"    \n";
+    this.angularModules = "\n        " + angModules.join(",\n") +"    \n";
   },
 
   generate: function() {
