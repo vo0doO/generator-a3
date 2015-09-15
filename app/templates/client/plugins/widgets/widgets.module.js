@@ -1,8 +1,8 @@
-(function() {
-  'use strict';
+(function () {
+    'use strict';
 
-  angular.module('a3.widgets', [
-      // add widget modules
-  ]);
+    angular.module('a3.widgets', [
+        // add widget modules
+    ]);
 
 })();

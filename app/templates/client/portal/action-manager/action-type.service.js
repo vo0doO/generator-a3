@@ -9,8 +9,8 @@
     function ActionType() {
         // action type
         return {
-            INCREMENT_COUNTER: 'INCREMENT_COUNTER',
-            DECREMENT_COUNTER: 'DECREMENT_COUNTER'
+            COUNTER_INCREMENT: 'COUNTER_INCREMENT',
+            COUNTER_DECREMENT: 'COUNTER_DECREMENT'
         };
     }
 

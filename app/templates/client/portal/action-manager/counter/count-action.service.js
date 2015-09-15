@@ -17,13 +17,13 @@
 
         function increment() {
             return {
-                type: ActionType.INCREMENT_COUNTER
+                type: ActionType.COUNTER_INCREMENT
             };
         }
 
         function decrement() {
             return {
-                type: ActionType.DECREMENT_COUNTER
+                type: ActionType.COUNTER_DECREMENT
             };
         }
 
