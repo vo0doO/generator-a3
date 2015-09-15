@@ -1,4 +1,4 @@
-(function (Redux) {
+(function () {
     'use strict';
 
     angular
@@ -13,4 +13,4 @@
 
         reduxUtil.registerActionHandler(actionHandlers);
     }
-})(window.Redux);
+})();
