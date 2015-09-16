@@ -16,11 +16,11 @@
 
         function registerActionHandler(actionHandlers) {
             var reducers = Redux.combineReducers(actionHandlers);
-            _createStore(reducers);
+            return _createStore(reducers);
         }
 
         function _createStore(reducers) {
-            $ngRedux.createStoreWith(
+            return $ngRedux.createStoreWith(
                 reducers,
                 [_thunkMiddleware],
                 [] // dev-tools
