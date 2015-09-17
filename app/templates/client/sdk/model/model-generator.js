@@ -8,15 +8,22 @@
     /* @ngInject */
     function modelGenerator(RestangularType) {
         this.getModel = getModel;
+        var models = {};
 
         // ex) 'dashboards'
         function getModel(modelName, type) {
-            var restangular = _getSource(type),
+            var model = models[modelName];
+
+            if(!model) {
+                var restangular = _getSource(type);
                 model = restangular.all(modelName);
 
-            model.one = function (id) {
-                return Restangular.one(modleName, id);
-            };
+                model.one = function (id) {
+                    return Restangular.one(modleName, id);
+                };
+
+                models[modelName] = model;
+            }
 
             return model;
         }
@@ -26,7 +33,7 @@
             if (!type) {
                 type = 'portal';
             }
-            
+
             return RestangularType.getSource(type);
         }
     }

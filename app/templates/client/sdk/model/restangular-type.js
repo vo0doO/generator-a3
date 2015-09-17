@@ -32,6 +32,8 @@
                 return getMPA();
             } else if (type === 'dcp') {
                 return getDCP();
+            } else {
+                return getPortal();
             }
         }
 
