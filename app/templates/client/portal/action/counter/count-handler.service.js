@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('<%= scriptAppName %>.action-manager')
+        .module('<%= scriptAppName %>.action')
         .factory('countHandler', countHandler);
 
     /* @ngInject */
