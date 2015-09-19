@@ -246,9 +246,9 @@ var AngularFullstackGenerator = yeoman.generators.Base.extend({
 
     var angModules = [
       "'a3.sdk'",
+      "'a3.common'",
       "'a3.widgets'",
-      "'a3.taskers'",
-      "'" + this.scriptAppName + ".action'"
+      "'a3.taskers'"
     ];
     if(this.filters.ngroute) angModules.push("'ngRoute'");
     if(this.filters.socketio) angModules.push("'btford.socket-io'");

@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('<%= scriptAppName %>.action')
+        .module('a3.common.action')
         .factory('countAction', countAction);
 
     /* @ngInject */

@@ -6,17 +6,36 @@
     "json3": "~3.3.1",
     "es5-shim": "~3.0.1",<% if(filters.bootstrap) { %><% if (filters.sass) { %>
     "bootstrap-sass-official": "~3.1.1",<% } %>
-    "bootstrap": "~3.1.1",<% } %>
+    "bootstrap": "~3.3.2",<% } %>
     "angular-resource": ">=1.4.*",
     "angular-cookies": ">=1.4.*",
     "angular-sanitize": ">=1.4.*",<% if(filters.ngroute) { %>
     "angular-route": ">=1.4.*",<% } %><% if(filters.uibootstrap) { %>
     "angular-bootstrap": "~0.11.0",<% } %>
+    "angular-local-storage": "~0.2.2",
     "font-awesome": ">=4.1.0",
-    "lodash": "~3.10.1",
+    "angular-touch": "^1.4.0",
+    "angular-translate": "~2.7.2",
+    "angular-translate-interpolation-messageformat": "~2.7.2",
+    "angular-translate-loader-partial": "~2.7.2",
+    "angular-translate-loader-static-files": "~2.7.2",
+    "angular-translate-loader-url": "~2.7.2",
+    "angular-translate-storage-cookie": "~2.7.2",
+    "angular-translate-storage-local": "~2.7.2",
+    "angular-ui-router": "0.2.13",
+    "angular-ui-sortable": "0.13.4",
+    "angular-websocket": "1.0.5",
+    "moment": "~2.8.3",
+    "restangular": "~1.5.1",
+    "underscore": "~1.8.3",
+    "underscore.string": "3.2.2"
     "restangular": "~1.5.1"<% if(filters.socketio) { %>,
     "angular-socket-io": "~0.6.0"<% } %><% if(filters.uirouter) { %>,
     "angular-ui-router": "~0.2.10"<% } %>
+  },
+  "resolutions": {
+    "angular": "^1.4.0",
+    "d3": "3.5.6"
   },
   "devDependencies": {
     "angular-mocks": ">=1.4.*",
