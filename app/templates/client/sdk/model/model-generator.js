@@ -6,7 +6,7 @@
         .service('modelGenerator', modelGenerator);
 
     /* @ngInject */
-    function modelGenerator(RestangularType) {
+    function modelGenerator(Restangular, RestangularType) {
         this.getModel = getModel;
         var models = {};
 
