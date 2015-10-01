@@ -19,7 +19,7 @@
                 model = restangular.all(modelName);
 
                 model.one = function (id) {
-                    return Restangular.one(modleName, id);
+                    return Restangular.one(modelName, id);
                 };
 
                 models[modelName] = model;

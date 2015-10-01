@@ -24,16 +24,21 @@
         };
 
         /* @ngInject */
-        function controller($scope, countAction, reduxUtil) {
+        function controller($scope, countAction, countHandler, stateManager) {
 
-            var unsubscribe = reduxUtil.mappingActionToScope(mapStateScope, countAction, this);
-            $scope.$on('destroy', unsubscribe);
-
-            function mapStateScope(state) {
+            // ex1)
+            stateManager.$watch(countAction, _mappingValue, $scope, this);
+            function _mappingValue(state) {
                 return {
                     counter: state.counter
                 };
             }
+
+            // ex2)
+            stateManager.subscribe(function() {
+                console.log('>>> total state:', stateManager.getState());
+            });
+            stateManager.dispatch(countAction.increment());
         }
 
     }

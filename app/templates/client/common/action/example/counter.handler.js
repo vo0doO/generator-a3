@@ -8,7 +8,7 @@
     /* @ngInject */
     function countHandler(ActionType) {
         return function handler(state, action) {
-            if (!state) {
+            if (typeof state === 'undefined') {
                 state = 0;
             }
 

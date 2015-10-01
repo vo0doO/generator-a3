@@ -55,22 +55,22 @@ module.exports = function (grunt) {
         watch: {
             injectJS: {
                 files: [
-                    '<%%= yeoman.client %>/{sdk,common,portal,plugins}/**/*.js',
-                    '!<%%= yeoman.client %>/{sdk,common,portal,plugins}/**/*.spec.js',
-                    '!<%%= yeoman.client %>/{sdk,common,portal,plugins}/**/*.mock.js',
-                    '!<%= yeoman.client %>/plugins/**/*.module.js',
-                    '!<%= yeoman.client %>/sdk/charts/charts.module.js',
-                    '!<%= yeoman.client %>/sdk/config/config.module.js',
-                    '!<%= yeoman.client %>/sdk/model/model.module.js',
-                    '!<%%= yeoman.client %>/sdk/redux/redux.js',
-                    '!<%%= yeoman.client %>/sdk/redux/redux.module.js',
-                    '!<%%= yeoman.client %>/sdk/utils/utils.module.js',
-                    '!<%%= yeoman.client %>/sdk/logger/logger.module.js',
-                    '!<%%= yeoman.client %>/sdk/session/session.module.js',
-                    '!<%%= yeoman.client %>/sdk/sdk.module.js',
-                    '!<%= yeoman.client %>/common/common.module.js',
-                    '!<%%= yeoman.client %>/portal/app.js'
-                ],
+                      '<%= yeoman.client %>/{assets,sdk,common,portal,plugins}/**/*.js',
+                      '!<%= yeoman.client %>/{assets,sdk,common,portal,plugins}/**/*.spec.js',
+                      '!<%= yeoman.client %>/{assets,sdk,common,portal,plugins}/**/*.mock.js',
+                      '!<%= yeoman.client %>/sdk/lib/**/*.js',
+                      '!<%= yeoman.client %>/sdk/charts/charts.module.js',
+                      '!<%= yeoman.client %>/sdk/config/config.module.js',
+                      '!<%= yeoman.client %>/sdk/model/model.module.js',
+                      '!<%= yeoman.client %>/sdk/redux/redux.js',
+                      '!<%= yeoman.client %>/sdk/redux/redux.module.js',
+                      '!<%= yeoman.client %>/sdk/utils/utils.module.js',
+                      '!<%= yeoman.client %>/sdk/logger/logger.module.js',
+                      '!<%= yeoman.client %>/sdk/session/session.module.js',
+                      '!<%= yeoman.client %>/sdk/sdk.module.js',
+                      '!<%= yeoman.client %>/common/action/action.module.js',
+                      '!<%= yeoman.client %>/common/common.module.js',
+                      '!<%= yeoman.client %>/portal/app.js'],
                 tasks: ['injector:scripts']
             },
             injectCss: {
@@ -161,12 +161,13 @@ module.exports = function (grunt) {
             },
             livereload: {
                 files: [
-                    '{.tmp,<%%= yeoman.client %>}/{sdk,common,portal,plugins}/**/*.css',
+                    '{.tmp,<%%= yeoman.client %>}/{assets,sdk,common,portal,plugins}/**/*.css',
                     '{.tmp,<%%= yeoman.client %>}/{sdk,common,portal,plugins}/**/*.html',
-                    '{.tmp,<%%= yeoman.client %>}/{sdk,common,portal,plugins}/**/*.js',
-                    '!{.tmp,<%%= yeoman.client %>}{sdk,common,portal,plugins}/**/*.spec.js',
-                    '!{.tmp,<%%= yeoman.client %>}/{sdk,common,portal,plugins}/**/*.mock.js',
-                    '<%%= yeoman.client %>/assets/images/{,*//*}*.{png,jpg,jpeg,gif,webp,svg}'
+                    '{.tmp,<%%= yeoman.client %>}/{assets,sdk,common,portal,plugins}/**/*.js',
+                    '!{.tmp,<%%= yeoman.client %>}{assets,sdk,common,portal,plugins}/**/*.spec.js',
+                    '!{.tmp,<%%= yeoman.client %>}/{assets,sdk,common,portal,plugins}/**/*.mock.js',
+                    '<%%= yeoman.client %>/assets/images/{,*//*}*.{png,jpg,jpeg,gif,webp,svg}',
+                    '<%= yeoman.client %>/assets/{bootstrap,styles}/{,*//*}*.css'
                 ],
                 options: {
                     livereload: true
@@ -326,11 +327,12 @@ module.exports = function (grunt) {
             dist: {
                 files: {
                     src: [
-                        '<%%= yeoman.dist %>/{,*/}*.js',
-                        '<%%= yeoman.dist %>/{,*/}*.css',
-                        '<%%= yeoman.dist %>/assets/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
-                        '<%%= yeoman.dist %>/assets/fonts/*'
-                    ]
+                        '<%= yeoman.dist %>/{,*/}*.js',
+                        '<%= yeoman.dist %>/{,*/}*.css',
+                        '<%= yeoman.dist %>/assets/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
+                        '<%= yeoman.dist %>/assets/styles/fonts/*',
+                        '<%= yeoman.dist %>/assets/styles/fonts-css/*'
+                     ]
                 }
             }
         },
@@ -684,43 +686,73 @@ module.exports = function (grunt) {
                     endtag: '<!-- endinjector -->'
                 },
                 files: {
-                    '<%%= yeoman.client %>/index.html': [
-                        ['{.tmp,<%%= yeoman.client %>}/{sdk,common,portal,plugins}/**/*.js',
-                            '!{.tmp,<%%= yeoman.client %>}/{sdk,common,portal,plugins}/**/*.spec.js',
-                            '!{.tmp,<%%= yeoman.client %>}/{sdk,common,portal,plugins}/**/*.mock.js',
-                            '!<%= yeoman.client %>/plugins/**/*.module.js',
-                            '!<%= yeoman.client %>/sdk/charts/charts.module.js',
-                            '!<%= yeoman.client %>/sdk/config/config.module.js',
-                            '!<%= yeoman.client %>/sdk/model/model.module.js',
-                            '!<%%= yeoman.client %>/sdk/redux/redux.js',
-                            '!<%%= yeoman.client %>/sdk/redux/redux.module.js',
-                            '!<%%= yeoman.client %>/sdk/utils/utils.module.js',
-                            '!<%%= yeoman.client %>/sdk/logger/logger.module.js',
-                            '!<%%= yeoman.client %>/sdk/session/session.module.js',
-                            '!<%%= yeoman.client %>/sdk/sdk.module.js',
-                            '!<%= yeoman.client %>/common/common.module.js',
-                            '!<%%= yeoman.client %>/portal/app.js'
-                        ]
+                  '<%= yeoman.client %>/index.html': [
+                      ['{.tmp,<%= yeoman.client %>}/{assets,sdk,common,portal,plugins}/**/*.js',
+                       '!{.tmp,<%= yeoman.client %>}/{assets,sdk,common,portal,plugins}/**/*.spec.js',
+                       '!{.tmp,<%= yeoman.client %>}/{assets,sdk,common,portal,plugins}/**/*.mock.js',
+                       '!<%= yeoman.client %>/sdk/lib/**/*.js',
+                       '!<%= yeoman.client %>/sdk/charts/*/lib/*.js',
+                       '!<%= yeoman.client %>/plugins/**/*.module.js',
+                       '!<%= yeoman.client %>/sdk/charts/**/*.module.js',
+                       '!<%= yeoman.client %>/sdk/lib/**/*.js',
+                       '!<%= yeoman.client %>/sdk/charts/charts.module.js',
+                       '!<%= yeoman.client %>/sdk/config/config.module.js',
+                       '!<%= yeoman.client %>/sdk/model/model.module.js',
+                       '!<%= yeoman.client %>/sdk/redux/redux.js',
+                       '!<%= yeoman.client %>/sdk/redux/redux.module.js',
+                       '!<%= yeoman.client %>/sdk/session/session.module.js',
+                       '!<%= yeoman.client %>/sdk/utils/utils.module.js',
+                       '!<%= yeoman.client %>/sdk/logger/logger.module.js',
+                       '!<%= yeoman.client %>/sdk/sdk.module.js',
+                       '!<%= yeoman.client %>/common/action/action.module.js',
+                       '!<%= yeoman.client %>/common/common.module.js',
+                       '!<%= yeoman.client %>/portal/app.js']
                     ]
                 }
             },
 
-            plugins: {
+            modules: {
                 options: {
-                    transform: function (filePath) {
-                        filePath = filePath.replace('/client/', '');
-                        filePath = filePath.replace('/.tmp/', '');
-                        return '<script src="' + filePath + '"></script>';
-                    },
-                    starttag: '<!-- injectorplugins:js -->',
-                    endtag: '<!-- endinjectorplugins -->'
+                  transform: function(filePath) {
+                    filePath = filePath.replace('/client/', '');
+                    filePath = filePath.replace('/.tmp/', '');
+                    return '<script src="' + filePath + '"></script>';
+                  },
+                  starttag: '<!-- injectormodules:js -->',
+                  endtag: '<!-- endinjectormodules -->'
                 },
                 files: {
-                    '<%= yeoman.client %>/index.html': [
-                        ['<%= yeoman.client %>/plugins/**/*.module.js']
+                  '<%= yeoman.client %>/index.html': [
+                       [
+                        '<%= yeoman.client %>/plugins/**/*.module.js',
+                        '<%= yeoman.client %>/sdk/charts/**/*.module.js',
+                        '!<%= yeoman.client %>/plugins/widgets/widgets.module.js',
+                        '!<%= yeoman.client %>/plugins/taskers/taskers.module.js',
+                        '!<%= yeoman.client %>/sdk/charts/charts.module.js'
+                        ]
                     ]
                 }
-            },
+              },
+
+              libs: {
+                options: {
+                  transform: function(filePath) {
+                    filePath = filePath.replace('/client/', '');
+                    filePath = filePath.replace('/.tmp/', '');
+                    return '<script src="' + filePath + '"></script>';
+                  },
+                  starttag: '<!-- injectorlibs:js -->',
+                  endtag: '<!-- endinjectorlibs -->'
+                },
+                files: {
+                  '<%= yeoman.client %>/index.html': [
+                       [
+                        '<%= yeoman.client %>/sdk/lib/**/*.js',
+                        '<%= yeoman.client %>/sdk/charts/*/lib/*.js'
+                       ]
+                    ]
+                }
+              },
 
             <% if(filters.stylus) { %>
 
