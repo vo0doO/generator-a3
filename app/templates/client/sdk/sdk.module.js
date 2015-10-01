@@ -6,13 +6,8 @@
         'ngSanitize',
         'ngTouch',
         // angular-ui
-        'ui.sortable',
         'ui.router',
         'ui.bootstrap',
-        // developers
-        'ngGrid',
-        'ng.deviceDetector',
-        'ngSelectable',
         // sdk
         'a3.sdk.charts',
         'a3.sdk.config',
