@@ -1,6 +1,6 @@
 {
   "name": "generator-a3",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "ACUBED Main Generator : JohnPapa AngularJS Style Guide + Yeoman generator for creating MEAN stack applications, using MongoDB, Express, AngularJS, and Node with generator-angular-fullstack v2.0.13",
   "keywords": [
     "yeoman-generator",
@@ -23,7 +23,7 @@
     "yeoman-generator": "~0.17.0",
     "chalk": "~0.4.0",
     "wiredep": "~0.4.2",
-    "generator-a3-component": "~0.2.5"
+    "generator-a3-component": "~0.2.6"
   },
   "peerDependencies": {
     "yo": ">=1.2.0"
